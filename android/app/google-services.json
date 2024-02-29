@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "437547043062",
+    "project_id": "sample-2bc88",
+    "storage_bucket": "sample-2bc88.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:437547043062:android:3aae5f47946ed019f6c4d7",
+        "android_client_info": {
+          "package_name": "com.example.sample_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "437547043062-v3qvk42flsapujvdnudrqmuosfbd1vca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIB87RmvKNXMxlE2JFk6W797Asg6H-Hj0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "437547043062-v3qvk42flsapujvdnudrqmuosfbd1vca.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "437547043062-hkm1mic6qibdpkt7thqr3tn1jf7eqm8o.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.schoolManagement.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:437547043062:android:ae27f17eba225e22f6c4d7",
+        "android_client_info": {
+          "package_name": "com.example.school_management"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "437547043062-6ic4n5tllftc7uf21llhg50nnopfe0fi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.school_management",
+            "certificate_hash": "193eab41c5b41e12134f3557dcac19222f317612"
+          }
+        },
+        {
+          "client_id": "437547043062-v3qvk42flsapujvdnudrqmuosfbd1vca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIB87RmvKNXMxlE2JFk6W797Asg6H-Hj0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "437547043062-v3qvk42flsapujvdnudrqmuosfbd1vca.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "437547043062-hkm1mic6qibdpkt7thqr3tn1jf7eqm8o.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.schoolManagement.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
