@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 import '../../../core/globel_variable.dart';
+import '../../course/course.dart';
 import '../../event/event_add.dart';
+import '../../event/event_count.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -40,236 +42,299 @@ class _MyHomePageState extends State<MyHomePage> {
                 drawer: SideBarXExample(controller: _controller,),
                 body: Stack(
                   children: [
-                    Image(
-                      image: NetworkImage(
-                          'https://png.pngtree.com/thumb_back/fh260/background/20220522/pngtree-abstract-white-and-light-'
-                              'gray-wave-modern-soft-luxury-texture-with-image_1379862.jpg'
-                      ),
-                      fit: BoxFit.cover,
-                      width: double.infinity, // Adjust width as needed
-                      height: double.infinity, // Adjust height as needed
-                    ),
-                    Row(
-                    children: [
-                      if(!isSmallScreen) SideBarXExample(controller: _controller),
-                      // Expanded(child: Center(child: AnimatedBuilder(
-                      //   animation: _controller,
-                      //   builder: (context,child){
-                      //     switch(_controller.selectedIndex){
-                      //       case 0: _key.currentState?.closeDrawer();
-                      //       return Center(
-                      //         child: Text('Home',style: TextStyle(color: Colors.white,fontSize: 40),),
-                      //       );
-                      //       case 1: _key.currentState?.closeDrawer();
-                      //       return Center(
-                      //         child: Text('Search',style: TextStyle(color: Colors.white,fontSize: 40),),
-                      //       );
-                      //       case 2: _key.currentState?.closeDrawer();
-                      //       return Center(
-                      //         child: Text('Settings',style: TextStyle(color: Colors.white,fontSize: 40),),
-                      //       );
-                      //       case 3: _key.currentState?.closeDrawer();
-                      //       return Center(
-                      //         child: Text('Theme',style: TextStyle(color: Colors.white,fontSize: 40),),
-                      //       );
-                      //       default:
-                      //         return Center(
-                      //           child: Text('Home',style: TextStyle(color: Colors.white,fontSize: 40),),
-                      //         );
-                      //     }
-                      //   },
-                      // ),)),
-                    ],
-                  ),
-                    Expanded(
-                      // color: Colors.greenAccent,
-                      // width:w*0.7,
-                      // height: h*0.8,
-                      child: Align(
-                        alignment: Alignment.topLeft,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 250,top: 70),
-                          child: Wrap(
-                            children: [
-                              GestureDetector(
-                                onTap: (){
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => PostUploding(),));
-                                },
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Expanded(
-                                    child: Container(
-                                      width: h*0.3,
-                                      height: h*0.25,
-                                      decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          // gradient: LinearGradient(
-                                          //     colors: [
-                                          //       Theme.of(context).colorScheme.onSecondary,
-                                          //       Theme.of(context).colorScheme.primaryContainer,
-                                          //       Theme.of(context).colorScheme.primaryContainer,
-                                          //       // Theme.of(context).colorScheme.primary,
-                                          //     ],
-                                          //     transform: const GradientRotation(pi /4 )
-                                          // ),
-                                          borderRadius: BorderRadius.circular(20),
-                                          boxShadow:[
-                                            BoxShadow(
-                                                blurRadius: 2,
-                                                spreadRadius: 0,
-                                                color: Colors.grey.shade500,
-                                                offset: Offset(5, 5)
-                                            ),
-                                          ]
+               Image(
+                 image: NetworkImage(
+                     'https://png.pngtree.com/thumb_back/fh260/background/20220522/pngtree-abstract-white-and-light-'
+                         'gray-wave-modern-soft-luxury-texture-with-image_1379862.jpg'
+                 ),
+                 fit: BoxFit.cover,
+                 width: double.infinity, // Adjust width as needed
+                 height: double.infinity, // Adjust height as needed
+               ),
+              Row(
+                children: [
+                  if(!isSmallScreen) SideBarXExample(controller: _controller),
+                ],
+              ),
+              Align(
+                alignment: Alignment.topLeft,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 250,top: 70),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Wrap(
+                          children: [
+                            EventCount(),
+
+                            CourseCount(),
+
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                width: h*0.3,
+                                height: h*0.22,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    gradient: LinearGradient(
+                                        colors: [
+                                          Theme.of(context).colorScheme.onSecondary,
+                                          Theme.of(context).colorScheme.primaryContainer,
+                                          Theme.of(context).colorScheme.primaryContainer,
+                                          // Theme.of(context).colorScheme.primary,
+                                        ],
+                                        transform: const GradientRotation(pi /4 )
+                                    ),
+                                    borderRadius: BorderRadius.circular(20),
+                                    boxShadow:[
+                                      BoxShadow(
+                                          blurRadius: 2,
+                                          spreadRadius: 0,
+                                          color: Colors.grey.shade500,
+                                          offset: Offset(5, 5)
                                       ),
-                                      child: Center(child: Text("Add Events",style:
-                                        TextStyle(fontWeight: FontWeight.bold,
-                                        color: Colors.black),)),
-                                    ),
-                                  ),
+                                    ]
                                 ),
-                              ),
-
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Expanded(
-                                  child: Container(
-                                    width: h*0.3,
-                                    height: h*0.25,
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        // gradient: LinearGradient(
-                                        //     colors: [
-                                        //       Theme.of(context).colorScheme.onSecondary,
-                                        //       Theme.of(context).colorScheme.primaryContainer,
-                                        //       Theme.of(context).colorScheme.primaryContainer,
-                                        //       // Theme.of(context).colorScheme.primary,
-                                        //     ],
-                                        //     transform: const GradientRotation(pi /4 )
-                                        // ),
-                                        borderRadius: BorderRadius.circular(20),
-                                        boxShadow:[
-                                          BoxShadow(
-                                              blurRadius: 2,
-                                              spreadRadius: 0,
-                                              color: Colors.grey.shade500,
-                                              offset: Offset(5, 5)
-                                          ),
-                                        ]
-                                    ),
-                                    child: Center(child: Text("Add Course",style:
+                                child: Center(child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("0",style:
                                     TextStyle(fontWeight: FontWeight.bold,
-                                        color: Colors.black),)),
-                                  ),
-                                ),
-                              ),
-
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Expanded(
-                                  child: Container(
-                                    width: h*0.3,
-                                    height: h*0.25,
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        // gradient: LinearGradient(
-                                        //     colors: [
-                                        //       Theme.of(context).colorScheme.onSecondary,
-                                        //       Theme.of(context).colorScheme.primaryContainer,
-                                        //       Theme.of(context).colorScheme.primaryContainer,
-                                        //       // Theme.of(context).colorScheme.primary,
-                                        //     ],
-                                        //     transform: const GradientRotation(pi /4 )
-                                        // ),
-                                        borderRadius: BorderRadius.circular(20),
-                                        boxShadow:[
-                                          BoxShadow(
-                                              blurRadius: 2,
-                                              spreadRadius: 0,
-                                              color: Colors.grey.shade500,
-                                              offset: Offset(5, 5)
-                                          ),
-                                        ]
-                                    ),
-                                    child: Center(child: Text("Add Nots",style:
+                                        color: Colors.black,fontSize: 50),),
+                                    Text("Count",style:
                                     TextStyle(fontWeight: FontWeight.bold,
-                                        color: Colors.black),)),
-                                  ),
-                                ),
+                                      color: Colors.black,),),
+                                  ],
+                                )),
                               ),
+                            ),
 
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Expanded(
-                                  child: Container(
-                                    width: h*0.3,
-                                    height: h*0.25,
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        // gradient: LinearGradient(
-                                        //     colors: [
-                                        //       Theme.of(context).colorScheme.onSecondary,
-                                        //       Theme.of(context).colorScheme.primaryContainer,
-                                        //       Theme.of(context).colorScheme.primaryContainer,
-                                        //       // Theme.of(context).colorScheme.primary,
-                                        //     ],
-                                        //     transform: const GradientRotation(pi /4 )
-                                        // ),
-                                        borderRadius: BorderRadius.circular(20),
-                                        boxShadow:[
-                                          BoxShadow(
-                                              blurRadius: 2,
-                                              spreadRadius: 0,
-                                              color: Colors.grey.shade500,
-                                              offset: Offset(5, 5)
-                                          ),
-                                        ]
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                width: h*0.3,
+                                height: h*0.22,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    gradient: LinearGradient(
+                                        colors: [
+                                          Theme.of(context).colorScheme.onSecondary,
+                                          Theme.of(context).colorScheme.primaryContainer,
+                                          Theme.of(context).colorScheme.primaryContainer,
+                                          // Theme.of(context).colorScheme.primary,
+                                        ],
+                                        transform: const GradientRotation(pi /4 )
                                     ),
-                                    child: Center(child: Text("View Club\nJoin Students",style:
-                                    TextStyle(fontWeight: FontWeight.bold,
-                                        color: Colors.black),)),
-                                  ),
+                                    borderRadius: BorderRadius.circular(20),
+                                    boxShadow:[
+                                      BoxShadow(
+                                          blurRadius: 2,
+                                          spreadRadius: 0,
+                                          color: Colors.grey.shade500,
+                                          offset: Offset(5, 5)
+                                      ),
+                                    ]
                                 ),
+                                child: Center(child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("0",style:
+                                    TextStyle(fontWeight: FontWeight.bold,
+                                        color: Colors.black,fontSize: 50),),
+                                    Text("Count",style:
+                                    TextStyle(fontWeight: FontWeight.bold,
+                                      color: Colors.black,),),
+                                  ],
+                                )),
                               ),
+                            ),
 
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Expanded(
-                                  child: Container(
-                                    width: h*0.3,
-                                    height: h*0.25,
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        // gradient: LinearGradient(
-                                        //     colors: [
-                                        //       Theme.of(context).colorScheme.onSecondary,
-                                        //       Theme.of(context).colorScheme.primaryContainer,
-                                        //       Theme.of(context).colorScheme.primaryContainer,
-                                        //       // Theme.of(context).colorScheme.primary,
-                                        //     ],
-                                        //     transform: const GradientRotation(pi /4 )
-                                        // ),
-                                        borderRadius: BorderRadius.circular(20),
-                                        boxShadow:[
-                                          BoxShadow(
-                                              blurRadius: 2,
-                                              spreadRadius: 0,
-                                              color: Colors.grey.shade500,
-                                              offset: Offset(5, 5)
-                                          ),
-                                        ]
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                width: h*0.3,
+                                height: h*0.22,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    gradient: LinearGradient(
+                                        colors: [
+                                          Theme.of(context).colorScheme.onSecondary,
+                                          Theme.of(context).colorScheme.primaryContainer,
+                                          Theme.of(context).colorScheme.primaryContainer,
+                                          // Theme.of(context).colorScheme.primary,
+                                        ],
+                                        transform: const GradientRotation(pi /4 )
                                     ),
-                                    child: Center(child: Text("View",style:
-                                    TextStyle(fontWeight: FontWeight.bold,
-                                        color: Colors.black),)),
-                                  ),
+                                    borderRadius: BorderRadius.circular(20),
+                                    boxShadow:[
+                                      BoxShadow(
+                                          blurRadius: 2,
+                                          spreadRadius: 0,
+                                          color: Colors.grey.shade500,
+                                          offset: Offset(5, 5)
+                                      ),
+                                    ]
                                 ),
+                                child: Center(child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("0",style:
+                                    TextStyle(fontWeight: FontWeight.bold,
+                                        color: Colors.black,fontSize: 50),),
+                                    Text("Count",style:
+                                    TextStyle(fontWeight: FontWeight.bold,
+                                      color: Colors.black,),),
+                                  ],
+                                )),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                      ),
-                    )
+                        Wrap(
+                          children: [
+                            GestureDetector(
+                              onTap: (){
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => PostUploding(),));
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  width: h*0.3,
+                                  height: h*0.25,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      // gradient: LinearGradient(
+                                      //     colors: [
+                                      //       Theme.of(context).colorScheme.onSecondary,
+                                      //       Theme.of(context).colorScheme.primaryContainer,
+                                      //       Theme.of(context).colorScheme.primaryContainer,
+                                      //       // Theme.of(context).colorScheme.primary,
+                                      //     ],
+                                      //     transform: const GradientRotation(pi /4 )
+                                      // ),
+                                      borderRadius: BorderRadius.circular(20),
+                                      boxShadow:[
+                                        BoxShadow(
+                                            blurRadius: 2,
+                                            spreadRadius: 0,
+                                            color: Colors.grey.shade500,
+                                            offset: Offset(5, 5)
+                                        ),
+                                      ]
+                                  ),
+                                  child: Center(child: Text("Add Events",style:
+                                  TextStyle(fontWeight: FontWeight.bold,
+                                      color: Colors.black),)),
+                                ),
+                              ),
+                            ),
+
+                            Course(),
+
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                width: h*0.3,
+                                height: h*0.25,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    // gradient: LinearGradient(
+                                    //     colors: [
+                                    //       Theme.of(context).colorScheme.onSecondary,
+                                    //       Theme.of(context).colorScheme.primaryContainer,
+                                    //       Theme.of(context).colorScheme.primaryContainer,
+                                    //       // Theme.of(context).colorScheme.primary,
+                                    //     ],
+                                    //     transform: const GradientRotation(pi /4 )
+                                    // ),
+                                    borderRadius: BorderRadius.circular(20),
+                                    boxShadow:[
+                                      BoxShadow(
+                                          blurRadius: 2,
+                                          spreadRadius: 0,
+                                          color: Colors.grey.shade500,
+                                          offset: Offset(5, 5)
+                                      ),
+                                    ]
+                                ),
+                                child: Center(child: Text("Add Nots",style:
+                                TextStyle(fontWeight: FontWeight.bold,
+                                    color: Colors.black),)),
+                              ),
+                            ),
+
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                width: h*0.3,
+                                height: h*0.25,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    // gradient: LinearGradient(
+                                    //     colors: [
+                                    //       Theme.of(context).colorScheme.onSecondary,
+                                    //       Theme.of(context).colorScheme.primaryContainer,
+                                    //       Theme.of(context).colorScheme.primaryContainer,
+                                    //       // Theme.of(context).colorScheme.primary,
+                                    //     ],
+                                    //     transform: const GradientRotation(pi /4 )
+                                    // ),
+                                    borderRadius: BorderRadius.circular(20),
+                                    boxShadow:[
+                                      BoxShadow(
+                                          blurRadius: 2,
+                                          spreadRadius: 0,
+                                          color: Colors.grey.shade500,
+                                          offset: Offset(5, 5)
+                                      ),
+                                    ]
+                                ),
+                                child: Center(child: Text("View Club\nJoin Students",style:
+                                TextStyle(fontWeight: FontWeight.bold,
+                                    color: Colors.black),)),
+                              ),
+                            ),
+
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Expanded(
+                                child: Container(
+                                  width: h*0.3,
+                                  height: h*0.25,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      // gradient: LinearGradient(
+                                      //     colors: [
+                                      //       Theme.of(context).colorScheme.onSecondary,
+                                      //       Theme.of(context).colorScheme.primaryContainer,
+                                      //       Theme.of(context).colorScheme.primaryContainer,
+                                      //       // Theme.of(context).colorScheme.primary,
+                                      //     ],
+                                      //     transform: const GradientRotation(pi /4 )
+                                      // ),
+                                      borderRadius: BorderRadius.circular(20),
+                                      boxShadow:[
+                                        BoxShadow(
+                                            blurRadius: 2,
+                                            spreadRadius: 0,
+                                            color: Colors.grey.shade500,
+                                            offset: Offset(5, 5)
+                                        ),
+                                      ]
+                                  ),
+                                  child: Center(child: Text("View",style:
+                                  TextStyle(fontWeight: FontWeight.bold,
+                                      color: Colors.black),)),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              )
                   ],
                 )
             );

@@ -59,6 +59,7 @@ class _PostUplodingState extends State<PostUploding> {
              height: h*0.8,
              decoration: BoxDecoration(
                // color: Colors.blue,
+               border: Border.all(width: 2,color: Colors.indigo),
                borderRadius: BorderRadius.circular(20),
              ),
              child: Column(
@@ -67,6 +68,7 @@ class _PostUplodingState extends State<PostUploding> {
                  Container(
                    width: w*0.3,
                    height: h*0.25,
+
                    decoration: BoxDecoration(
                        color: Colors.black,
                        borderRadius: BorderRadius.circular(10),

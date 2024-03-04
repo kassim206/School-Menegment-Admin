@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:sample_project/view/auth/login_page.dart';
+import 'package:sample_project/view/home/screen/test.dart';
 
 import 'core/globel_variable.dart';
 import 'firebase_options.dart';
@@ -27,7 +28,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: LoginScreen(key: UniqueKey()),
+      // home: LoginScreen(key: UniqueKey()),
+      home: MyHomePage(),
     );
   }
 }
