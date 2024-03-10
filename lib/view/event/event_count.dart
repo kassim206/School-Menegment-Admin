@@ -13,18 +13,10 @@ class EventCount extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        width: h * 0.3,
-        height: h * 0.22,
+        width: w,
+        height: h * 0.18,
         decoration: BoxDecoration(
           color: Colors.white,
-          gradient: LinearGradient(
-            colors: [
-              Theme.of(context).colorScheme.onSecondary,
-              Theme.of(context).colorScheme.primaryContainer,
-              Theme.of(context).colorScheme.primaryContainer,
-            ],
-            transform: const GradientRotation(pi / 4),
-          ),
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
@@ -62,10 +54,10 @@ class EventCount extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'Count',
+                    'Total No Events',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                      color: Colors.indigoAccent,
                     ),
                   ),
                 ],

@@ -30,7 +30,16 @@ class _CourseState extends State<Course> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      TextFormField(controller: courseContoller,
+                      TextFormField(
+                        controller: courseContoller,
+                        decoration: InputDecoration(
+                          labelText: 'Enter Course ',
+                          hintText: 'Enter your course',
+                          border: OutlineInputBorder( // Border styling
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          // You can add more decoration properties as needed
+                        ),
                       ),
                       SizedBox(height: 60,),
                       ElevatedButton(
@@ -38,9 +47,14 @@ class _CourseState extends State<Course> {
                           // Function to add data to Firebase Firestore
                           _addDataToFirestore();
                         },
-                        child: Text("ADD"),
-                        style: ElevatedButton.styleFrom(minimumSize: Size(600, 50)),
+                        child: Text("ADD" ,style: TextStyle(color: Colors.white),),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(Colors.indigo), // Set background color
+                          minimumSize: MaterialStateProperty.all<Size>(Size(600, 50)), // Set minimum size
+                          // You can add more styling properties here as needed
+                        ),
                       )
+
                     ],
                   ),
                 ),
@@ -49,8 +63,8 @@ class _CourseState extends State<Course> {
           );
         },
         child: Container(
-          width: h * 0.3,
-          height: h * 0.25,
+          width: w,
+          height: h * 0.18,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(20),
@@ -105,18 +119,10 @@ class _CourseCountState extends State<CourseCount> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        width: h * 0.3,
-        height: h * 0.22,
+        width: w,
+        height: h * 0.18,
         decoration: BoxDecoration(
           color: Colors.white,
-          gradient: LinearGradient(
-            colors: [
-              Theme.of(context).colorScheme.onSecondary,
-              Theme.of(context).colorScheme.primaryContainer,
-              Theme.of(context).colorScheme.primaryContainer,
-            ],
-            transform: const GradientRotation(pi / 4),
-          ),
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
@@ -154,10 +160,10 @@ class _CourseCountState extends State<CourseCount> {
                     ),
                   ),
                   Text(
-                    'Count',
+                    'Total No Course',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                      color: Colors.indigoAccent,
                     ),
                   ),
                 ],
