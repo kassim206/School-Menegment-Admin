@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../graph/graph_data.dart';
 import '../home/screen/home_screen.dart';
 
 class BasicBottomNavBar extends StatefulWidget {
@@ -11,12 +12,9 @@ class BasicBottomNavBar extends StatefulWidget {
 class _BasicBottomNavBarState extends State<BasicBottomNavBar> {
   int _selectedIndex = 0;
 
-  static const List<Widget> _pages = <Widget>[
+  static  List<Widget> _pages = <Widget>[
     HomeScreen(), // Add your HomePage here
-    Icon(
-      Icons.dashboard_outlined,
-      size: 150,
-    ),
+    StackedBarGraph(),
     // Icon(
     //   Icons.chat,
     //   size: 150,
@@ -47,7 +45,7 @@ class _BasicBottomNavBarState extends State<BasicBottomNavBar> {
           ),
 
           BottomNavigationBarItem(
-            icon: Icon(Icons.dashboard_outlined,),
+            icon: Icon(Icons.auto_graph,),
             label: 'MORE',
           ),
           // BottomNavigationBarItem(

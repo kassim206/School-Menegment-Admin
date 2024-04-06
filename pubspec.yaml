@@ -40,12 +40,19 @@ dependencies:
   flutter_colorpicker: ^1.0.3
   cloud_firestore_odm: ^1.0.0-dev.83
   image_picker: ^1.0.7
+  awesome_notifications:
   cloud_firestore: ^4.15.6
   firebase_storage: ^11.6.7
   firebase_auth: ^4.17.6
   flutter_bounce: ^1.1.0
   google_fonts: ^6.1.0
   fl_chart: ^0.35.0
+  palette_generator:
+  flutter_local_notifications: ^17.0.0
+  firebase_messaging: ^14.7.20
+  vertical_barchart: ^2.0.0+2
+  stacked_bar_chart: ^1.1.0+2
+
 
 
 dev_dependencies:

@@ -36,10 +36,15 @@ class _PostUplodingState extends State<PostUploding> {
   Widget build(BuildContext context) {
     return SafeArea(child:
     Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.indigo,
+        foregroundColor: Colors.white,
+        title: Text("Add post"),
+      ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
          children: [
            Center(
              child: Padding(
@@ -49,7 +54,7 @@ class _PostUplodingState extends State<PostUploding> {
                  children: [
                    Container(
                      width: double.infinity,
-                     height: h*0.25,
+                     height: 200,
         
                      decoration: BoxDecoration(
                          color: Colors.black,
@@ -57,12 +62,13 @@ class _PostUplodingState extends State<PostUploding> {
                          image: DecorationImage(
                              image: NetworkImage(addpost??""),fit: BoxFit.cover)),
                    ),
+                   SizedBox(height: 15,),
                    Row(
                      mainAxisAlignment: MainAxisAlignment.center,
                      children: [
                        Container(
-                         width: w*.230,
-                         height: h*.100,
+                         width: 50,
+                         height: 50,
                          decoration: BoxDecoration(
                              color: Colors.white,
                              borderRadius: BorderRadius.circular(10)
@@ -72,11 +78,12 @@ class _PostUplodingState extends State<PostUploding> {
                              onTap: (){
                                update(media: ImageSource.camera);
                              },
-                             child:  Image(image: NetworkImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxbVT96botqSb2PCUzGNur5mPCaKNsT0TbyA&usqp=CAU"),)),
+                             child:  Image(image: NetworkImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxbVT96botqSb2PCUzGNur5mPCaKNsT0TbyA&usqp=CAU"),fit: BoxFit.cover,)),
                        ),
+                       SizedBox(width: 15,),
                        Container(
-                         width: w*.250,
-                         height: h*.100,
+                         width: 50,
+                         height: 50,
                          decoration: BoxDecoration(
                              color: Colors.white,
                              borderRadius: BorderRadius.circular(10)
@@ -85,42 +92,12 @@ class _PostUplodingState extends State<PostUploding> {
                              onTap: (){
                                update(media: ImageSource.gallery);
                              },
-                             child:  Image(image: NetworkImage("assets/images/gellery.png"),)),
+                             child:  Image(image: AssetImage("assets/images/gellery.png"), fit: BoxFit.cover,)),
                          // child: Image(image: NetworkImage("https://icon-library.com/images/gallery-icon/gallery-icon-17.jpg"),),
                        ),
                      ],
                    ),
-                   // Container(
-                   //   width: w*0.07,
-                   //   height: h*0.07,
-                   //   decoration: BoxDecoration(
-                   //       color: Colors.white,
-                   //       borderRadius: BorderRadius.circular(10)
-                   //   ),
-                   //   // child: Image(image: NetworkImage("https://icons.iconarchive.com/icons/iconarchive/outline-camera/512/Flat-Red-Big-Camera-icon.png"),),
-                   //   child: GestureDetector(
-                   //       onTap: (){
-                   //         update(media: ImageSource.camera);
-                   //       },
-                   //       child:  Image(image: NetworkImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:"
-                   //           "ANd9GcRpDoDo1TLx0OcwuxRRUsVJ5qmICY-wM7NZQA&usqp=CAU"),)),
-                   // ),
-                   // Container(
-                   //   width: w*0.07,
-                   //   height: h*0.07,
-                   //   decoration: BoxDecoration(
-                   //       color: Colors.white,
-                   //       borderRadius: BorderRadius.circular(10)
-                   //   ),
-                   //   child: GestureDetector(
-                   //       onTap: (){
-                   //         update(media: ImageSource.gallery);
-                   //       },
-                   //       child:  Image(image: NetworkImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:"
-                   //           "ANd9GcRpDoDo1TLx0OcwuxRRUsVJ5qmICY-wM7NZQA&usqp=CAU"),
-                   //         fit: BoxFit.cover,)),
-                   //   // child: Image(image: NetworkImage("https://icon-library.com/images/gallery-icon/gallery-icon-17.jpg"),),
-                   // ),
+                   SizedBox(height: 15,),
                    Container(
                      width: double.infinity,
                      height: 130,
@@ -132,7 +109,7 @@ class _PostUplodingState extends State<PostUploding> {
                        padding: const EdgeInsets.all(8.0),
                        child: Column(
                          children: [
-                           Text("Description",style: TextStyle(color: Colors.black),),
+                           Text("Add Titile ",style: TextStyle(color: Colors.black),),
                            TextFormField(
                              controller: text,
                            )
@@ -140,6 +117,7 @@ class _PostUplodingState extends State<PostUploding> {
                        ),
                      ),
                    ),
+                   SizedBox(height: 15,),
                    InkWell(
                      onTap: (){
                        var post=EventModel(
@@ -156,34 +134,41 @@ class _PostUplodingState extends State<PostUploding> {
                            color: Colors.blue.shade900,
                            borderRadius: BorderRadius.circular(10)
                        ),
-                       child: InkWell(onTap:
-                           () async {
-                         var p =EventModel(
-                           // clubName: eventModel!.clubName,
+                       child: InkWell(
+                         onTap: () async {
+                           var p = EventModel(
                              postDescription: text.text,
-                             likesList:[],
+                             likesList: [],
                              postUrl: addpost,
-                             uploadedTime: DateTime.now());
-                         eventModel =p;
-                         await  FirebaseFirestore.instance
-                             .collection(Firebaseconstant.user)
-                             .doc()
-                             .collection('posts')
-                             .add(p.toJson()).then((value) async {
-                           var data =await value.get();
-                           var ref = data.reference;
-                           var a=eventModel?.copyWith(
-                               postId: value.id,
-                               postRef: ref
+                             uploadedTime: DateTime.now(),
                            );
-        
-                           print('ref=$ref');
-                           await  ref.update(a!.toJson());
-                         });
-                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content:Text(" successfully uploaded")));
-        
-                       },
-                           child: Center(child: Text("upload post",style: TextStyle(color: Colors.white,),))),
+                           eventModel = p;
+                           await FirebaseFirestore.instance
+                               .collection('posts') // Directly accessing the 'posts' collection
+                               .add(p.toJson())
+                               .then((value) async {
+                             var data = await value.get();
+                             var ref = data.reference;
+                             var a = eventModel?.copyWith(
+                               postId: value.id,
+                               postRef: ref,
+                             );
+
+                             print('ref=$ref');
+                             await ref.update(a!.toJson());
+                           });
+                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                             content: Text("Successfully uploaded"),
+                           ));
+                         },
+                         child: Center(
+                           child: Text(
+                             "Upload Post",
+                             style: TextStyle(color: Colors.white),
+                           ),
+                         ),
+                       ),
+
                      ),
                    ),
                  ],

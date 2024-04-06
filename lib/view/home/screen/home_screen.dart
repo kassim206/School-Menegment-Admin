@@ -5,9 +5,15 @@ import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sample_project/core/globel_variable.dart';
 
+import '../../barchart/barchart.dart';
 import '../../course/course.dart';
+import '../../course/course_view.dart';
 import '../../event/event_add.dart';
 import '../../event/event_count.dart';
+import '../../post/event_post.dart';
+import '../../post/hom_postview.dart';
+import '../../registerStudents/dispay_regStudents.dart';
+import '../../registerStudents/registerStudent_count.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
@@ -52,9 +58,9 @@ class HomeScreen extends StatelessWidget {
               },
             ),
             ListTile(
-              title: Text('Add Course'),
+              title: Text('Uploded Post'),
               onTap: () {
-                // Navigator.push(context, MaterialPageRoute(builder: (context) =>  Course()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) =>  PostListPage()));
               },
             ),
           ],
@@ -92,9 +98,38 @@ class HomeScreen extends StatelessWidget {
                     Expanded(
                       child: Bounce(
                         onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => CoursePage(),));
                         },
                         duration: const Duration(milliseconds: 100),
                         child: CourseCount(),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Bounce(
+                        onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => RegisteredStudentsListPage(),));
+                        },
+                        duration: const Duration(milliseconds: 100),
+                        child: RegisteredStudentsPage(),
+                      ),
+                    ),
+                    SizedBox(
+                      width: w * 0.025,
+                    ),
+                    Expanded(
+                      child: Bounce(
+                        onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => PostListPage()));
+                        },
+                        duration: const Duration(milliseconds: 100),
+                        child:  postview(),
                       ),
                     ),
                   ],
@@ -121,15 +156,6 @@ class HomeScreen extends StatelessWidget {
                               height: h * 0.18,
                               decoration: BoxDecoration(
                                   color: Colors.white,
-                                  // gradient: LinearGradient(
-                                  //     colors: [
-                                  //       Theme.of(context).colorScheme.onSecondary,
-                                  //       Theme.of(context).colorScheme.primaryContainer,
-                                  //       Theme.of(context).colorScheme.primaryContainer,
-                                  //       // Theme.of(context).colorScheme.primary,
-                                  //     ],
-                                  //     transform: const GradientRotation(pi /4 )
-                                  // ),
                                   borderRadius: BorderRadius.circular(20),
                                   boxShadow:[
                                     BoxShadow(

@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -27,21 +25,19 @@ class EventCount extends StatelessWidget {
             ),
           ],
         ),
-        child: Center(
-          child: StreamBuilder<QuerySnapshot>(
-            stream: FirebaseFirestore.instance.collection('users').doc('ky1w6nTsBMXKLw2rkgfb').collection('posts').snapshots(),
-            builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-              if (snapshot.hasError) {
-                return Text('Error: ${snapshot.error}');
-              }
-
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return CircularProgressIndicator(); // Show loading indicator while waiting for data
-              }
-
-              // Get count of documents in the subcollection
-              int count = snapshot.data!.size;
-
+        child: FutureBuilder<int>(
+          future: _getPostCount(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            } else if (snapshot.hasError) {
+              return Center(
+                child: Text('Error: ${snapshot.error}'),
+              );
+            } else {
+              int count = snapshot.data ?? 0;
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -62,10 +58,16 @@ class EventCount extends StatelessWidget {
                   ),
                 ],
               );
-            },
-          ),
+            }
+          },
         ),
       ),
     );
+  }
+
+  Future<int> _getPostCount() async {
+    QuerySnapshot querySnapshot =
+    await FirebaseFirestore.instance.collection('posts').get();
+    return querySnapshot.size;
   }
 }
